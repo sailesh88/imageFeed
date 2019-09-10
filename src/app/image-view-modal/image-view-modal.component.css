@@ -1,0 +1,12 @@
+/* for Merging the two image */
+
+div {
+    position: relative;
+    display: inline;
+}
+
+.imtop {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

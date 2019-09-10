@@ -1,0 +1,19 @@
+<div class="Main">
+    <mat-card class="card" *ngFor="let img of overlayed_url; let i = index">
+        <img card-image src="{{img}}" alt="Sports-Image">
+
+        <mat-card-actions class="footer">
+            <button mat-raised-button (click)='openModal(img, url[i],overlay[i])'>
+              <mat-icon aria-hidden="false" aria-label="zoom_out_map icon" > 
+                  zoom_out_map
+              </mat-icon>
+          </button>&nbsp;&nbsp;
+            <button mat-raised-button (click)="downloadFile(img, true)">
+              <mat-icon aria-hidden="false" aria-label="get_app icon"> 
+                  get_app
+              </mat-icon>
+          </button>
+
+        </mat-card-actions>
+    </mat-card>
+</div>
