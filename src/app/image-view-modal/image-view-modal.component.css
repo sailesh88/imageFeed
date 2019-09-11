@@ -1,6 +1,6 @@
 /* for Merging the two image */
 
-div {
+.base {
     position: relative;
     display: inline;
 }
@@ -9,4 +9,13 @@ div {
     position: absolute;
     bottom: 0;
     right: 0;
+    width: 100%;
+}
+
+.imgbase {
+    width: 100%;
+}
+
+.footer {
+    padding-top: .5em;
 }

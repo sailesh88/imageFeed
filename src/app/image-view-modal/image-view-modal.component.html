@@ -1,4 +1,18 @@
 <div class="base">
-    <img src="{{data.url}}" class="imgbase" />
-    <img src="{{data.overlay}}" class="imtop" />
+    <pinch-zoom>
+        <img src="{{data.overlay}}" class="imtop" />
+    </pinch-zoom><img src="{{data.url}}" class="imgbase" />
+
+</div>
+<div class="footer">
+    <button mat-raised-button class="b1">
+            <mat-icon aria-hidden="false" aria-label="crop icon"> 
+                    crop
+                </mat-icon>
+    </button>&nbsp;&nbsp;
+    <button mat-raised-button (click)='openModal(hero)' class="b2">
+            <mat-icon aria-hidden="false" aria-label="clear icon" > 
+                    clear
+            </mat-icon>
+        </button>
 </div>

@@ -1,10 +1,9 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { ServerService } from './services/server.service'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FileSaverService } from 'ngx-filesaver';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { ImageViewModalComponent } from './image-view-modal/image-view-modal.component';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 export interface ImageData {
   overlayed_url: string;
@@ -64,15 +63,18 @@ export class AppComponent {
   downloadFile(url, fromRemote: boolean) {
     const fileName = `save.jpg`;
     let headers = new HttpHeaders();
-    headers.append('Content-Type:', 'application/x-www-form-urlencoded');
-    headers.append("Access-Control-Allow-Credentials", "*");
+    //headers.append('Content-Type:', 'application/x-www-form-urlencoded');
+    //headers.append('Access-Control-Request-Headers','access-control-allow-origin');
+    //headers.append('Access-Control-Request-Headers', 'content-type');
     // headers.append("Access-Control-Allow-Origin","Origin, X-Requested-With, Content-Type");
     // headers.append("Access-Control-Allow-Headers", "CORELATION_ID")
-    // headers.append('Content-Type', 'image/jpeg');
+    headers.append('Content-Type', 'image/jpeg');
+    headers.append('Access-Control-Allow-Origin', '*');
 
     if (fromRemote) {
       this.http.get(url, {
-        headers: { Token: '6e6cf317-b19f-4cdb-b3d1-29d1dce7d1f8' },
+        headers : headers,
+        withCredentials : true,
         observe: 'response',
         responseType: 'blob',
 
@@ -89,7 +91,7 @@ export class AppComponent {
   // This function retrieves all the data from the user and displayes the relative images as a modal
   openModal(item1, item2, item3): void {
     const dialogRef = this.dialog.open(ImageViewModalComponent, {
-
+      
       data: {
         overlay_url: item1,
         url: item2,

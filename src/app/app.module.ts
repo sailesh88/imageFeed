@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { PinchZoomModule } from 'ngx-pinch-zoom';
 
 import {MatCardModule} from '@angular/material/card'
 import { MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule } from '@angular/material';
@@ -20,6 +21,7 @@ import { ImageViewModalComponent } from './image-view-modal/image-view-modal.com
     HttpClientModule,
     BrowserAnimationsModule,
     MatIconModule,
+    PinchZoomModule,
     MatCardModule,
     MatDialogModule, 
     MatFormFieldModule, 
