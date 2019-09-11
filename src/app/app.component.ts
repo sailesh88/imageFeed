@@ -3,7 +3,7 @@ import { ServerService } from './services/server.service'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FileSaverService } from 'ngx-filesaver';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { ImageViewModalComponent } from './image-view-modal/image-view-modal.component'
+import { ImageViewModalComponent } from './image-view-modal/image-view-modal.component';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 export interface ImageData {
@@ -39,8 +39,7 @@ export class AppComponent {
   }
 
 
-  // to get the Image data and store them in their respective data points inorder to run the app we have to comment out the for loop on and 
-  //when the app is compiled we can uncomment and then the app will be working fine
+  // to get the Image data and store them in their respective data points.
   getdata() {
     var params = {
       "game_id": "test0001",
@@ -49,11 +48,11 @@ export class AppComponent {
 
     this.http.post(this.server.url, params).toPromise().then(
       data => {
-        for (let i in data.body.imgs) {
+        for (let i in (<any>data).body.imgs) {
           console.log(i);
-          this.overlayed_url[i] = data.body.imgs[i].overlayed_url;
-          this.url[i] = data.body.imgs[i].url;
-          this.overlay[i] = data.body.imgs[i].overlay;
+          this.overlayed_url[i] = (<any>data).body.imgs[i].overlayed_url;
+          this.url[i] = (<any>data).body.imgs[i].url;
+          this.overlay[i] = (<any>data).body.imgs[i].overlay;
         }
         console.log(this.overlayed_url + "\n" + this.url + "\n" + this.overlay + "\n");
       }
