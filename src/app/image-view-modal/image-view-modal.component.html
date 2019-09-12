@@ -1,18 +1,29 @@
-<div class="base">
+<div id="base" class="base" (mouseover)="changeText=true">
+    <pinch-zoom *ngIf="changeText " [zoom-button]="false" (click)="click($event)">
+        <img src="{{data.url}} " class="imgbase " />
+        <img src="{{data.overlay}} " class="imtop " *ngIf="changeText " />
+    </pinch-zoom>
 
-    <img src="{{data.overlay}}" class="imtop" />
-    <img src="{{data.url}}" class="imgbase" />
+    <img src="{{data.overlay}} " class="imtop " *ngIf="!changeText " />
+    <img src="{{data.url}} " class="imgbase " *ngIf="!changeText " />
 
 </div>
-<div class="footer">
-    <button mat-raised-button class="b1">
-            <mat-icon aria-hidden="false" aria-label="crop icon"> 
+
+<div class="footer ">
+    <button mat-raised-button class="b1 ">
+            <mat-icon aria-hidden="false " aria-label="crop icon "> 
                     crop
                 </mat-icon>
-    </button>&nbsp;&nbsp;
+    </button> &nbsp;&nbsp;
 
-    <button mat-raised-button (click)='onNoClick()' class="b2">
-            <mat-icon aria-hidden="false" aria-label="clear icon" > 
+    <button mat-raised-button (click)="downloadFile1()">
+        <mat-icon aria-hidden="false" aria-label="cloud_download icon">
+            cloud_download
+        </mat-icon>
+    </button> &nbsp;&nbsp;
+
+    <button mat-raised-button (click)='onNoClick()' class="b2 ">
+            <mat-icon aria-hidden="false " aria-label="clear icon " > 
                     clear
             </mat-icon>
         </button>
